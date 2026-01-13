@@ -8,6 +8,11 @@ namespace ConsoleApp_EF_418.Services
     {
         private readonly UniversityDbContext context = new UniversityDbContext();
 
+        /// <summary>
+        /// This method creates faculty.
+        /// </summary>
+        /// <param name="faculty">New faculty</param>
+        /// <returns></returns>
         public async Task Create(Faculty faculty)
         {
             await context.Faculties.AddAsync(faculty);
@@ -15,6 +20,11 @@ namespace ConsoleApp_EF_418.Services
             await context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method deletes faculty by ID.
+        /// </summary>
+        /// <param name="id">Deleting faculty</param>
+        /// <returns></returns>
         public async Task DeleteById(int id)
         {
             await context.Faculties.FindAsync(id);
@@ -23,17 +33,32 @@ namespace ConsoleApp_EF_418.Services
             await context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method gets list of faculties.
+        /// </summary>
+        /// <returns></returns>
         public List<Faculty> GetAllFaculty()
         {
              return context.Faculties.ToList();
         }
 
+        /// <summary>
+        /// This method gets faculty by ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Faculty?> GetById(int id)
         {
 
             return await context.Faculties.FindAsync(id);
         }
 
+        /// <summary>
+        /// This method updates faculty.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="faculty"></param>
+        /// <returns></returns>
         public async Task Update(int id, Faculty faculty)
         {
             await context.Faculties.FindAsync(id);
